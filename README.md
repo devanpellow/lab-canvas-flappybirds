@@ -20,67 +20,57 @@ If you want to understand better the game, go ahead and play a bit [here](http:/
 
 ## First iteration: Let's create our board
 
-You notice we have a `div` with **game-board** `id` in our HTML file, so you need to create the `canvas` element inside it from our `javascript` file.
+Add a scrolling `background` using the file in the `assets` folder.
 
-After adding the `canvas`, you should add the `background`. In the `images` folder, you will find the file you should use for it.
-
-:::info
-:wink: Check the Learning Unit to remember how to do an infinite loop with an image!
-:::
-
+You should draw it from your `Game` class.
 
 ## Second Iteration: Create our Player
 
 ![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_5279ab3427a72a2fbf77cbc9e2b32664.png)
 
-We have the `canvas` with our beautiful background. Now we need to add ´Faby´.
+We have the `canvas` with our beautiful background. Now we need to add `Faby`.
 
-Remember he should have the following properties:
+Example of properties your `Bird` could have:
 
-- `width`
-- `height`
-- `speedX`
-- `speedY`
+- `x`
+- `y`
 - `gravity`
-- `gravitySpeed`
+- `img`
 
-And the functions `update` and `newPos` to keep updating its position in every update.
+Make sure you display your Bird using the image in the `assets` folder.
 
-We should also check the user iteration when he clicks the **spacebar**. Every time the **spacebar** is clicked, the `gravity` of 'Faby' should change to negative, and after the user removes the clicking finger, set the `gravity` to positive again.
+Everytime the user clicks, the `gravity` should decrease, and increase otherwise, so you can make Faby jump!
 
 ## Third Iteration: Creating the obstacles
 
 <img src="https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_032b5d79ab1c7412e747473b679f0b59.png" alt="" style="width:450px; float:right; margin-left: 50px"/>
 
-You need to add some obstacles to make this fun. If you notice every time we create obstacles we should create two of them and position one at the top, and the other at the bottom, and of course make a gap between them where 'Faby' could pass.
+You need to add some obstacles to make this fun. If you notice, an obstacle is composed of two pipes, position one at the top, and the other at the bottom, and of course make a gap between them where 'Faby' could pass.
 
-It might be a good idea to create an array to store all our obstacles. This will help us later to move them, and check if 'Faby' crash with one of them.
+It might be a good idea to create an array to store all our obstacles. This will help us later to move them, and check if 'Faby' collided with one of them.
 
 For now, just push them into the array.
 
-## Fourth Iteration: Updating our Canvas
+You can start creating your obstacle using 2 rectangles, an upper and a lower one. This way, you "only" have to replace the rectangles by the images in the `assets` folder.
 
-This is the most important function in our project. The `update` function should do the following:
+Your obstacles should be moving on the `x-axis` so you might want to update their `x` property and have them moving towards Faby.
 
-- Clear the `canvas`
-- Update obstacles position
-- Update our player position
-- Create new obstacles
+💡 You can use the frameCount to create your obstacles.
 
-:::info
-For creating **new obstacles**, we recommend to do it every certain amount of updates. You should consider adding a counter to see how many time we update our `canvas`.
-:::
+## Fourth Iteration: Checking crashes
 
-## Fifth Iteration: Checking crashes
+When 'Faby' crashes in one of the obstacles, or goes out of the `canvas` the game should stop.
 
-When 'Faby' crash to one of the obstacles, or goes out of the `canvas` the game should stop.
+In this iteration, you need to create a function that checks if 'Faby' have not crush to any obstacle.
 
-In this iteration, you need to create a function that checks if 'Faby' have not crush to any obstacle. For that purpose you can use the array of obstacles we had to create, iterating over it and checking the position.
+In your `Obstacle` class, add a method that checks whether one of your rectangles have collided with the Bird or not.
+
+To help you, create a `rect` in your Bird so that you can compare if your Bird overlaps with any of the obstacle's `rectangles`
+
+[Rectangle Intersection](https://silentmatt.com/rectangle-intersection/)
 
 ### BONUS: Adding points
 
 If we want to challenge somebody, we need to know who makes more points. Go ahead and add it to the game.
 
 Oh! And when you lose, show how much they get!
-
-:bulb: You can use the counter we add to the update function!
