@@ -12,14 +12,21 @@ class Background {
 	draw() {
 		image(this.bgImg, this.x, 0, WIDTH, HEIGHT);
 		image(this.bgImg, this.x1, 0, WIDTH, HEIGHT);
-		if (this.x <= -WIDTH) {
+    
+    
+    if (this.x <= -WIDTH) {
 			this.x = WIDTH;
 		}
 		if (this.x1 <= -WIDTH) {
 			this.x1 = WIDTH;
-		}
+    }
+    
 
-		this.x -= 1;
-		this.x1 -= 1;
-	}
+		this.x -= 5;
+    this.x1 -= 5;
+    
+
+    
+  }
+  
 }
